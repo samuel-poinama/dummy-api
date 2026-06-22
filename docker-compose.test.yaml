@@ -1,0 +1,9 @@
+
+
+
+services:
+  dummy-api-test:
+    container_name: dummy-api-test
+    build: 
+      context: .
+      dockerfile: Dockerfile.test

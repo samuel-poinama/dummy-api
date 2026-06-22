@@ -1,0 +1,10 @@
+
+
+services:
+  dummy-api:
+    container_name: dummy-api
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:3000"
