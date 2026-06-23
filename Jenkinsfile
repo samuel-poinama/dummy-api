@@ -1,5 +1,10 @@
 pipeline {
     agent { label 'runner' }
+    environment {
+        IMAGE_NAME = 'samuelpoinama/dummy-api'
+        VERSION = 'latest'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -9,9 +14,17 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "build image"'
-                sh 'docker compose build'
+                sh 'docker build -t $IMAGE_NAME:$VERSION .'
             }
         }
+        
+        stage('Push') {
+            steps {
+                sh 'echo "push image"'
+                sh 'docker push $IMAGE_NAME:$VERSION'
+            }
+        }
+
         stage('Test') {
             steps {
                 sh 'echo "Lancement des tests..."'

@@ -3,8 +3,6 @@
 services:
   dummy-api:
     container_name: dummy-api
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    image: samuelpoinama/dummy-api:latest
     ports:
       - "80:3000"
